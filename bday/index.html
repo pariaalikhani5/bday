@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background:url(bg.jpg);
+background-size:cover;
+background-position:center;
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+font-family:tahoma;
+}
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+h1{
+color:white;
+font-size:55px;
+font-family:Lalezar;
+text-shadow:0 0 15px hotpink;
+}
+
+img{
+width:320px;
+border-radius:25px;
+box-shadow:0 0 20px white;
+}
+
+button{
+padding:15px 35px;
+margin-top:25px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:pink;
+cursor:pointer;
+}
+
+#letter{
+display:none;
+background:rgba(255,255,255,.95);
+padding:30px;
+border-radius:20px;
+width:700px;
+max-width:90%;
+line-height:2;
+font-size:20px;
+box-shadow:0 0 20px white;
+}
+
+.envelope{
+width:220px;
+cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+
+<!-- صفحه اول -->
+<div class="page active" id="page1">
+
+<h1>تولدت مبارک یکی یدونم❤️</h1>
+
+<img src="photo1.jpg">
+
+<br>
+
+<button onclick="nextPage(2)">
+ادامه🎂
+</button>
+
+</div>
+
+
+
+<!-- صفحه دوم -->
+<div class="page" id="page2">
+
+<h1>نانایییییی</h1>
+
+<img src="photo2.jpg">
+
+<br>
+
+<button onclick="document.getElementById('music').play()">
+کلیک کن
+</button>
+
+<br>
+
+<button onclick="nextPage(3)">
+هنوز ادامه داره
+</button>
+
+<audio id="music">
+<source src="birthday.mp3">
+</audio>
+
+</div>
+
+
+
+<!-- صفحه سوم -->
+<div class="page" id="page3">
+
+<img src="envelope.png" class="envelope" id="envelope">
+
+<br>
+
+<button id="openBtn" onclick="openLetter()">
+💌 بازم کن
+</button>
+
+<div id="letter">
+<p id="text"></p>
+</div>
+
+</div>
+
+
+
+<script>
+
+function nextPage(num){
+
+document.querySelectorAll(".page").forEach(
+page => page.classList.remove("active")
+);
+
+document.getElementById("page"+num)
+.classList.add("active");
+
+}
+
+
+
+function openLetter(){
+
+document.getElementById("envelope").style.display="none";
+document.getElementById("openBtn").style.display="none";
+
+document.getElementById("letter").style.display="block";
+
+let txt =
+"محراب جونم خیلی خوشحالم که تولدته و این دومین تولدته که کنارتم و میخوام اونجور که تو دوست داری پیش بره، از صمیم قلب میخوام که امسال به خواسته هات برسی و همه چی مطابق میل تو پیش بره و دست آورد های خوبی داشته باشی. امیدوارم تو این سن جدید خاطره های خوشی ثبت کنی و نگرانی هات کمتر از سال قبل بشن. عاشقتم از ته قلبم🌹👩‍❤️‍💋‍👨";
+
+let i=0;
+
+function type(){
+
+if(i<txt.length){
+
+document.getElementById("text").innerHTML += txt.charAt(i);
+
+i++;
+
+setTimeout(type,50);
+
+}
+
+}
+
+type();
+
+}
+
+</script>
+
+</body>
+</html>
